@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+<body>
+    <h1>CCC</h1>
+    <h1 id="teste"></h1>
+   
+</body>
+<script>
+	let queryString = window.location.search;
+	if(queryString.length >0){
+		if(queryString.charAt(0) == '?'){
+			queryString = queryString.substring(1,queryString.length);
+		}
+	}
+
+    document.getElementById("teste").innerHTML = queryString;
+	console.log(queryString);
+
+</script>
+</html>

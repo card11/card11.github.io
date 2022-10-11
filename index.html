@@ -1,16 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ola</title>
+	<title>Tiago Cardoso</title>
 </head>
 <body>
 	<h3>Teste.</h3>
 	<h4>Hash <div id="recebeDados"></div></h4>
+	<script src="./base/js/crypt.js"></script>
 </body>
 <script>
-	const queryString = window.location.search;
+	let queryString = window.location.search;
+	var urlRedicerionamento= "";
+	if(queryString.length >0){
+		if(queryString.charAt(0) == '?'){
+			queryString = queryString.substring(1,queryString.length);
+		}
+	}
 	console.log(queryString);
 
+	let obj = JSON.parse(Decrypt(queryString));
+	if(obj != null){
+		if(obj.t != null){
+			// vai fazer redirecionamento.
+			temObj = false;
+			if(obj.obj != null){
+				temObj = true; // por hora vou redirecionar o obj
+			}
+			let caminho = './projetos/'
+			switch (obj.t){
+				case 1:
+					caminho+="convite/index.html";
+					break;
+				case 2: 
+					caminho += "uteis/index.html";
+					break;
+				default:
+					caminho += "./index.html";
+					temObj = false;
+			}
+
+			urlRedicerionamento=caminho+(temObj?"?"+queryString:"");
+			console.log(urlRedicerionamento);
+
+		}
+	}
+	function redireciona(){
+		window.location.href=urlRedicerionamento;
+	}
+
 </script>
-<script src="./base/js/crypt.js"></script>
 </html>
