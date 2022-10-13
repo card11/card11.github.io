@@ -9,48 +9,63 @@
 	<script src="./base/js/crypt.js"></script>
 </body>
 <script>
+	// pegando os dados da url
 	let queryString = window.location.search;
 	var urlRedicerionamento= "";
-	if(queryString.length >0){
+	if(queryString.length >0){// removendo o "?"
 		if(queryString.charAt(0) == '?'){
 			queryString = queryString.substring(1,queryString.length);
 		}
 	}
-	console.log(queryString);
+	// console.log(queryString);
 
-	let obj = JSON.parse(Decrypt(queryString));
+	let obj = JSON.parse(Decrypt(queryString)); // transformando a hash em obj
 	if(obj != null){
-		if(obj.t != null){
-			// vai fazer redirecionamento.
-			temObj = false;
-			if(obj.obj != null){
-				temObj = true; // por hora vou redirecionar o obj
-			}
-			let caminho = './projetos/'
-			switch (obj.t){
-				case 'convite':
-					caminho+="convite/index.html";
-					break;
-				case 'uteis': 
-					caminho += "uteis/index.html";
-					break;
-				default:
-					caminho += "./index.html";
-					temObj = false;
-			}
-
-			urlRedicerionamento=caminho+(temObj?"?"+queryString:"");
-			console.log(urlRedicerionamento);
-
+		if(obj.idconvite != null){
+			
 		} else {
-			urlRedicerionamento = "./index.html";
+			// TODO colocar o metodo de convite invalido
 		}
 	} else {
-		urlRedicerionamento = "./index.html";
+		// TODO colocar o metodo de convite invalido
 	}
-	function redireciona(){
-		window.location.href=urlRedicerionamento;
-	}
+	
+
+
+
+
+	// if(obj != null){
+	// 	if(obj.idconvite != null){
+	// 		// vai fazer redirecionamento.
+	// 		temObj = false;
+	// 		if(obj.obj != null){
+	// 			temObj = true; // por hora vou redirecionar o obj
+	// 		}
+	// 		let caminho = './projetos/'
+	// 		switch (obj.t){
+	// 			case 'convite':
+	// 				caminho+="convite/index.html";
+	// 				break;
+	// 			case 'uteis': 
+	// 				caminho += "uteis/index.html";
+	// 				break;
+	// 			default:
+	// 				caminho += "./index.html";
+	// 				temObj = false;
+	// 		}
+
+	// 		urlRedicerionamento=caminho+(temObj?"?"+queryString:"");
+	// 		console.log(urlRedicerionamento);
+
+	// 	} else {
+	// 		urlRedicerionamento = "./index.html";
+	// 	}
+	// } else {
+	// 	urlRedicerionamento = "./index.html";
+	// }
+	// function redireciona(){
+	// 	window.location.href=urlRedicerionamento;
+	// }
 
 </script>
 </html>
