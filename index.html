@@ -28,10 +28,10 @@
 			}
 			let caminho = './projetos/'
 			switch (obj.t){
-				case 1:
+				case 'convite':
 					caminho+="convite/index.html";
 					break;
-				case 2: 
+				case 'uteis': 
 					caminho += "uteis/index.html";
 					break;
 				default:
@@ -42,7 +42,11 @@
 			urlRedicerionamento=caminho+(temObj?"?"+queryString:"");
 			console.log(urlRedicerionamento);
 
+		} else {
+			urlRedicerionamento = "./index.html";
 		}
+	} else {
+		urlRedicerionamento = "./index.html";
 	}
 	function redireciona(){
 		window.location.href=urlRedicerionamento;
