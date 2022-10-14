@@ -311,7 +311,10 @@
 
             if(queryString.length > 0){
                 let arq = dcrp(queryString);
-                let arquivo = "http://127.0.0.1:5500/objsConvite/"+arq+".json"
+                let arquivo = "http://127.0.0.1:5500/objsConvite/"+arq+".json";
+                if(location.hostname != "127.0.0.1" || location.hostname != "localhost"){
+                    arquivo = "https://sir-tiago.github.io/objsConvite/"+arq+".json";
+                }
                 $.get( arquivo, function( data ) {
                     
                     var objRetorno = data;
