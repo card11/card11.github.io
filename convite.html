@@ -7,7 +7,7 @@
     <title>Convite</title>
     <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Bad+Script);
+        @import url(https://fonts.googleapis.com/css?family=Tangerine);
 
         *{
         margin: 0;
@@ -19,7 +19,7 @@
         }
 
         body{
-            font-family: 'Bad Script', cursive;
+            font-family: 'Tangerine', cursive;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -88,7 +88,7 @@
             border-top: 175px solid hsla(0,0%,85%,1);
             border-left: 160px solid transparent;
             border-right: 160px solid transparent;
-        transform-origin:center top;
+            transform-origin:center top;
             z-index: 10;
         }
 
@@ -156,7 +156,7 @@
         #carta hgroup h2{
             font-size: 1em;
             color: hsla(0,63%,57%,1);
-        margin-top:-20px;
+            margin-top:0px;
             text-align: center;
             text-shadow: 0px 1px 1px hsla(0,0%,100%,1);
         }
@@ -164,17 +164,18 @@
         #carta p{
             color: hsla(0,0%,20%,1);
             text-shadow: 0px 1px 1px hsla(0,0%,100%,1);
-            font-size: 0.85em;
+            font-size: 1.2em;
+            font-weight: bold;
             line-height:1.45em;
-            margin: 30px 50px 0 50px;
+            margin: 10px 20px 0 30px;
         }
 
         #carta p:first-letter{
             color: hsla(0,63%,57%,1);
             text-shadow: 0px 2px 1px hsla(0,0%,100%,1);
-            font-size: 2.5em;
+            font-size: 1.4em;
             float: left;
-            line-height:1.2em;
+            line-height:0.5em;
             padding:10px 10px 0 0;
         }
     </style>
@@ -185,17 +186,32 @@
 <div id="perspectiva">
     <div id="contenedor">
         <div class="cara frontal">
-            <h1>Mr. Codepen<br><span>Scroll ↓</span></h1>
+            <h1 id="nome">Tiago<br><span>Deslize ↓</span></h1>
         </div>
         <div class="cara trasera">
             <div id="abrir"></div>
             <div id="partes"></div>
             <div id="carta">
                 <hgroup>
-                    <h1>Scroll</h1>
+                    <h1>Deslize</h1>
                                       <h2>↓</h2>
                 </hgroup>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
+                <p id="texto">Olá meu amor, tudo bem?</p>
+                <p id="texto">
+                    Meu aniversário será dia 29/10 (sabádo) e sua presença é muito importante pra mim.
+                    A festa ocorrerá na "<link> Lituânia, n° 100, JD Europa<link>", tendo inicio as 18:00h.
+                    Teremos um campeonato de sinuca, mas também terá outros jogos, como truco, twistter (e se alguém animar rola até um war).
+                    Peço que traga o que for beber e um gole de carne.
+
+                    Posso contar com sua presença?
+                    <link>SIM</link> | <link>Infelizmente não posso</link>
+
+
+                    O campeonato de sinuca será das 19:00 as 20:45, serão 8 duplas na primeira chave,
+                    tendo uma partida a cada 15 minutos (partida eliminatória).
+                    <link>Clique aqui para se inscrever</link>.
+                    
+                </p>
             </div>
         </div>
     </div><!-- fin contenedor -->
