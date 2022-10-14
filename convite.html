@@ -300,30 +300,40 @@
             // console.log(queryString);
 
             
-            let obj = null;
-            if(queryString.length >0){
-                obj = JSON.parse(dcrp(queryString)); // transformando a hash em obj
+            // let obj = null;
+            // if(queryString.length >0){
+            //     obj = JSON.parse(dcrp(queryString)); // transformando a hash em obj
+            // }
+ 
+            var nomeEnvelope = "NÃO CONVIDADO";
+            var nomeCarta = nomeEnvelope;
+            
+
+            if(queryString.length > 0){
+                let arq = dcrp(queryString);
+                let arquivo = "http://127.0.0.1:5500/objsConvite/"+arq+".json"
+                $.get( arquivo, function( data ) {
+                    
+                    var objRetorno = data;
+                    // let obj = JSON.parse(text);
+                    // alert(obj);
+                    nomeCarta = objRetorno.nomeCarta;
+                    nomeEnvelope = objRetorno.nomeEnvelope;
+                    exibir(true);
+                    // console.log(objRetorno.nomeCarta);
+                });
+
             }
-            let exibir = false;
-            let nomeEnvelope = "NÃO CONVIDADO";
-            let nomeCarta = nomeEnvelope;
-            if(obj != null){
-                if(obj.idconvite != null){
-                    console.log("aqui");
-                    // TODO fazer o get usando o id, se houver ja preencher o obj com o retorno e preencher a carta
+            
                 
-                } 
+            function exibir(ex){
+                if(ex){
+                    $("#nomeEnvelope").html(nomeEnvelope);
+                    $("#nomeCarta").html(nomeCarta);
+                    $("#perspectiva").show();    
+                }
             }
 
-            // TODO descomentar
-            nomeCarta = "meu amor";
-            nomeEnvelope = "Luana, meu amor";
-            exibir = true;
-            if(exibir){
-                $("#nomeEnvelope").html(nomeEnvelope);
-                $("#nomeCarta").html(nomeCarta);
-                $("#perspectiva").show();
-            }
         });
     </script>
 </head>
