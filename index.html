@@ -19,16 +19,20 @@
 	}
 	// console.log(queryString);
 
-	let obj = JSON.parse(Decrypt(queryString)); // transformando a hash em obj
+	
+	let obj = null;
+	if(queryString.length >0){
+		obj = JSON.parse(Descriptografar(queryString)); // transformando a hash em obj
+	}
+	let exibir = false;
+	let nomeEnvelope = "NÃO CONVIDADO";
+	let nomeCarta = nomeEnvelope;
 	if(obj != null){
 		if(obj.idconvite != null){
-			
-		} else {
-			// TODO colocar o metodo de convite invalido
-		}
-	} else {
-		// TODO colocar o metodo de convite invalido
-	}
+			console.log("aqui");
+			// faz a request e pega o retorno para jogar na mensagem
+		} 
+	} 
 	
 
 

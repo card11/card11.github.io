@@ -178,15 +178,162 @@
             line-height:0.5em;
             padding:10px 5px 0 0;
         }
+        a{
+            text-decoration: underline;
+            color: #0000EE;
+        }
+        ins{
+            text-decoration: none;   
+        }
     </style>
+    <script src="./base/jquery.js" ></script>
+    <script src="./base/js/crypt.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#perspectiva").hide();
+        });
+    </script>
+    <script defer>
+        // autor: Marco Barría
+    let queryString = window.location.search;   
+     $(window).scroll(function () {   
+           var scr = $(window).scrollTop(),
+                   C = $('#contenedor'),
+                    A = $('#abrir'),
+                    E = $('#carta'),
+                        F = $('#carta hgroup h2'),
+                    P = $('#perspectiva');
+        
+            // giro y abertura
+             if (scr >= 100) {
+                    C.css({
+                        'transition':'all 1s',
+                        'transform':'rotateY(180deg)'
+                    });
+                    A.css({
+                        'transition':'all 1s .5s',
+                        'transform':'rotateX(180deg)',
+                        'z-index': '0'
+                    });
+             }
+             // cerrado y giro
+             else if (scr <= 100) {
+                    C.css({
+                        'transition':'all 1s .5s',
+                        'transform':'rotateY(0deg)'
+                    });
+                    A.css({
+                        'transition':'all 1s',
+                        'transform':'rotateX(0deg)',
+                        'z-index': '10'
+                    });  
+             }
+             // Sobre trasladoY / carta
+             if (scr >= 500) {
+                    E.css({
+                        'transition':'all .5s 1s',
+                        'top':'-550px',
+                        'height':'500px'
+                    });
+                 P.css({
+                     'transition':'all 1s',
+                     'transform':'translateY(450px)'
+                 });
+                    F.css({
+                     'transition':'all 1s',
+                     'transform':'rotateZ(180deg)'
+                    });
+             }
+             // Sobre position original / guardado carta
+             else if (scr <= 500) {
+                    E.css({
+                        'transition':'all .5s',
+                        'top':'3px',
+                        'height':'200px'
+                    });
+                 P.css({
+                     'transform':'translateY(0px)'
+                 });
+                    F.css({
+                     'transform':'rotateZ(0deg)'
+                    });
+             }
+        });
+
+
+        function inscreverSinuca(){
+            let inscreverSinuca = confirm("")
+            alert("Boa sorte!!!🍀\r\nPara confirmar a inscrição, preciso de colocar no evento ok?"); 
+            if(inscreverSinuca){
+                let win2 = window.open("https://calendar.google.com/event?action=TEMPLATE&tmeid=NGV2c2htM2xnbmFvdmo2azlsazZ2NHRkbDAgdGlhZ29jYXJkb3NvMDExQG0&tmsrc=tiagocardoso011%40gmail.com","_blank");
+                win2.focus;
+            } else {
+                alert("Infelizmente sem adicionar o evento na sua agenda, a inscrição não terá sido feita.😕");
+            }
+            
+        }
+
+        function sim(){
+            // TODO fazer o metodo para confirmar a presença
+            let salvarAgenda = confirm("Perfeito! 🎉🥳🎉 \r\nVamos confirmar adicionando o evento na sua agenda para ok?");
+    
+            if(salvarAgenda == true){
+                let win =window.open("https://calendar.google.com/event?action=TEMPLATE&tmeid=NjFqaXBxNnFobHU0czVqdmtxMDN2YzMzZm4gdGlhZ29jYXJkb3NvMDExQG0&tmsrc=tiagocardoso011%40gmail.com","_blank");
+                win.focus;
+            } else {
+                alert("Infelizmente sem adicionar na sua agenda, não saberei que você confirmou.😕")
+            }
+
+        }
+
+        function nao(){
+            alert("Tudo bem, compreendo, caso mude de ideia só confirmar aqui posteriormente... ☺️");
+        }
+        $(document).ready(function(){
+            
+            var urlRedicerionamento= "";
+            if(queryString.length >0){// removendo o "?"
+                if(queryString.charAt(0) == '?'){
+                    queryString = queryString.substring(1,queryString.length);
+                }
+            }
+            // console.log(queryString);
+
+            
+            let obj = null;
+            if(queryString.length >0){
+                obj = JSON.parse(dcrp(queryString)); // transformando a hash em obj
+            }
+            let exibir = false;
+            let nomeEnvelope = "NÃO CONVIDADO";
+            let nomeCarta = nomeEnvelope;
+            if(obj != null){
+                if(obj.idconvite != null){
+                    console.log("aqui");
+                    // TODO fazer o get usando o id, se houver ja preencher o obj com o retorno e preencher a carta
+                
+                } 
+            }
+
+            // TODO descomentar
+            nomeCarta = "meu amor";
+            nomeEnvelope = "Luana, meu amor";
+            exibir = true;
+            if(exibir){
+                $("#nomeEnvelope").html(nomeEnvelope);
+                $("#nomeCarta").html(nomeCarta);
+                $("#perspectiva").show();
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- basado backface-visibility https://css-tricks.com/almanac/properties/b/backface-visibility/ -->
 
-<div id="perspectiva">
+<div id="perspectiva" vis >
     <div id="contenedor">
         <div class="cara frontal">
-            <h1 id="nome">Luana, meu amor<br><span>Deslize ↓</span></h1>
+            <h1><div id="nomeEnvelope"></div><br><span>Deslize ↓</span></h1>
         </div>
         <div class="cara trasera">
             <div id="abrir"></div>
@@ -196,20 +343,20 @@
                     <h1>Deslize</h1>
                                       <h2>↓</h2>
                 </hgroup>
-                <p class="primeiro">Olá meu amor, tudo bem?</p>
+                <p class="primeiro">Aopa <ins id="nomeCarta"></ins>, tudo bem?</p>
                 <p>Meu aniversário será dia 30, porém farei uma reunião com amigos dia 29/10 (sabádo) e sua presença é muito importante para mim.</p>
-                <p>O endereço "<a href="https://goo.gl/maps/DZLjjGM4Npo17zLL6">Lituânia, n° 100, JD Europa 🗺️</a>", tendo inicio as 18:00h.
+                <p>O endereço "<a href="https://goo.gl/maps/DZLjjGM4Npo17zLL6" target="_blank">Lituânia, n° 100, JD Europa 🗺️</a>", tendo inicio as 18:00h.
                     Teremos um campeonato de sinuca, e alguns outros jogos, como truco, twistter (e se alguém animar rola até um war).
                     <br/>Peço que traga o que for beber e um gole de carne.
                 </p>
                 <p>
                     Posso contar com sua presença? <br/>
-                    &nbsp;&nbsp;&nbsp;<a href="#" style="color: #2c762c;">Sim!!!</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#" style="color: #c33434;">Infelizmente não posso...</a>
+                    &nbsp;&nbsp;&nbsp;<a style="color: #2c762c;" onclick="sim()">Sim!!!</a> &nbsp;&nbsp;&nbsp;&nbsp; <a style="color: #c33434;" onclick="nao()">Infelizmente não posso...</a>
                 </p>
                 <p>
                     O campeonato de sinuca será das 19:00 as 20:45, serão 8 duplas na primeira chave,
                     tendo uma partida a cada 15 minutos (partida eliminatória).
-                    <br/><a href="#">Clique aqui para se inscrever</a>.
+                    <br/><a onclick="inscreverSinuca()">Clique aqui para se inscrever</a>.
                     
                 </p>
             </div>
@@ -217,73 +364,5 @@
     </div><!-- fin contenedor -->
 </div>
 <div id="wrapper"></div>
-<script src="./base/jquery.js"></script>
-<script>
-    // autor: Marco Barría
-
- $(window).scroll(function () {   
-       var scr = $(window).scrollTop(),
-       		C = $('#contenedor'),
-  	  		A = $('#abrir'),
-  	  		E = $('#carta'),
-					F = $('#carta hgroup h2'),
-  	  		P = $('#perspectiva');
-    
-    	// giro y abertura
-     	if (scr >= 100) {
-				C.css({
-					'transition':'all 1s',
-					'transform':'rotateY(180deg)'
-				});
-				A.css({
-					'transition':'all 1s .5s',
-					'transform':'rotateX(180deg)',
-					'z-index': '0'
-				});
-     	}
-     	// cerrado y giro
-     	else if (scr <= 100) {
-				C.css({
-					'transition':'all 1s .5s',
-					'transform':'rotateY(0deg)'
-				});
-				A.css({
-					'transition':'all 1s',
-					'transform':'rotateX(0deg)',
-					'z-index': '10'
-				});  
-     	}
-     	// Sobre trasladoY / carta
-     	if (scr >= 500) {
-				E.css({
-					'transition':'all .5s 1s',
-					'top':'-550px',
-					'height':'500px'
-				});
-     		P.css({
-     			'transition':'all 1s',
-     			'transform':'translateY(450px)'
-     		});
-				F.css({
-     			'transition':'all 1s',
-     			'transform':'rotateZ(180deg)'
-				});
-     	}
-     	// Sobre position original / guardado carta
-     	else if (scr <= 500) {
-				E.css({
-					'transition':'all .5s',
-					'top':'3px',
-					'height':'200px'
-				});
-     		P.css({
-     			'transform':'translateY(0px)'
-     		});
-				F.css({
-     			'transform':'rotateZ(0deg)'
-				});
-     	}
-    });
-</script>
 </body>
 </html>
