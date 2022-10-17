@@ -263,8 +263,7 @@
 
 
         function inscreverSinuca(){
-            let inscreverSinuca = confirm("")
-            alert("Boa sorte!!!🍀\r\nPara confirmar a inscrição, preciso de colocar no evento ok?"); 
+            let inscreverSinuca = confirm("Boa sorte!!!🍀\r\nPara confirmar a inscrição, preciso de colocar no evento ok?"); 
             if(inscreverSinuca){
                 let win2 = window.open("https://calendar.google.com/event?action=TEMPLATE&tmeid=NGV2c2htM2xnbmFvdmo2azlsazZ2NHRkbDAgdGlhZ29jYXJkb3NvMDExQG0&tmsrc=tiagocardoso011%40gmail.com","_blank");
                 win2.focus;
@@ -312,8 +311,9 @@
 
             if(queryString.length > 0){
                 let arq = dcrp(queryString);
+                console.log(location.hostname)
                 let arquivo = "http://127.0.0.1:5500/objsConvite/"+arq+".json";
-                if(location.hostname != "127.0.0.1" || location.hostname != "localhost"){
+                if(location.hostname != "127.0.0.1" && location.hostname != "localhost"){
                     arquivo = "https://sir-tiago.github.io/objsConvite/"+arq+".json";
                 }
                 $.get( arquivo, function( data ) {
