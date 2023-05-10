@@ -297,7 +297,7 @@
                     queryString = queryString.substring(1,queryString.length);
                 }
             }
-            console.log(queryString);
+             console.log(queryString);
 
             
             // let obj = null;
@@ -305,8 +305,8 @@
             //     obj = JSON.parse(dcrp(queryString)); // transformando a hash em obj
             // }
  
-            var nomeEnvelope = "NÃO CONVIDADO";
-            var nomeCarta = nomeEnvelope;
+            var nome = "NÃO CONVIDADO";
+            var apelido = nome;
             
 
             if(queryString.length > 0){
@@ -321,10 +321,10 @@
                     var objRetorno = data;
                     // let obj = JSON.parse(text);
                     // alert(obj);
-                    nomeCarta = objRetorno.nomeCarta;
-                    nomeEnvelope = objRetorno.nomeEnvelope;
+                    apelido = objRetorno.apelido;
+                    nome = objRetorno.nome;
                     exibir(true);
-                    // console.log(objRetorno.nomeCarta);
+                    // console.log(objRetorno.apelido);
                 });
 
             }
@@ -332,8 +332,8 @@
                 
             function exibir(ex){
                 if(ex){
-                    $("#nomeEnvelope").html(nomeEnvelope);
-                    $("#nomeCarta").html(nomeCarta);
+                    $("#nome").html(nome);
+                    $("#apelido").html(apelido);
                     $("#perspectiva").show();    
                 }
             }
@@ -347,7 +347,7 @@
 <div id="perspectiva" vis >
     <div id="contenedor">
         <div class="cara frontal">
-            <h1><div id="nomeEnvelope"></div><br><span>Deslize ↓</span></h1>
+            <h1><div id="nome"></div><br><span>Deslize ↓</span></h1>
         </div>
         <div class="cara trasera">
             <div id="abrir"></div>
@@ -357,21 +357,13 @@
                     <h1>Deslize</h1>
                                       <h2>↓</h2>
                 </hgroup>
-                <p class="primeiro">Aopa <ins id="nomeCarta"></ins>, tudo bem?</p>
-                <p>Meu aniversário será dia 30, porém farei uma reunião com amigos, algo mais reservado com pessoas mais próximas apenas, dia 29/10 (sabádo) e sua presença é muito importante para mim.</p>
+                <p class="primeiro"></p>
+                <p><ins id="apelido" id="fraseAbertura"></ins></p>
                 <p>O endereço é "<a href="https://goo.gl/maps/DZLjjGM4Npo17zLL6" target="_blank">Lituânia, n° 150, JD Europa 🗺️</a>", tendo inicio ás 18:00h.
                     Teremos um campeonato de sinuca, e alguns outros jogos, como truco, twistter (e se alguém animar rola até um war).
                     Peço que traga o que for beber e um gole de carne.
                 </p>
-                <p style="padding-left: 3em;">
-                    Posso contar com sua presença? <br/>
-                    &nbsp;&nbsp;<a style="color: #2c762c;" onclick="sim()">Sim!!!</a> &nbsp;&nbsp;&nbsp;&nbsp; <a style="color: #c33434;" onclick="nao()">Infelizmente não posso...</a>
-                </p>
-                <p>
-                    O campeonato de sinuca será das 19:00 ás 20:45, serão 8 duplas na primeira chave,
-                    tendo uma partida a cada 15 minutos (partida eliminatória). <a onclick="inscreverSinuca()">Clique aqui para se inscrever</a>.
-                    
-                </p>
+                
             </div>
         </div>
     </div><!-- fin contenedor -->

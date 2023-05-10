@@ -1,5 +1,11 @@
 {
-    "nomeEnvelope":"Diogo",
-    "nomeCarta":"Diogo",
-    "chave":"wrnDkMOWw4zDog"
+    "nome":"Diogo",
+    "apelido":"Diogo",
+    "chave":"w6nDjMOaw5nDmA",
+    "fraseAbertura":"Aopa <ins id=\"apelido\"></ins>, tudo bem?",
+    "folhas":[
+        {
+            "conteudo":"   Olá"
+        }
+    ]
 }
