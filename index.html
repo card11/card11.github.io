@@ -12,7 +12,7 @@
       const base64String = urlParams.get('d');
 
       // Chave de descriptografia (deve ser mantida em segredo e nunca ser compartilhada publicamente)
-      const chaveDescriptografia = "teste";
+      const chaveDescriptografia = "00112233445566778899aabbccddeeff";
 
       // Descriptografa usando AES
       const bytes = CryptoJS.AES.decrypt(base64String, chaveDescriptografia);
