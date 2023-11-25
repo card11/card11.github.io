@@ -1,75 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Tiago Cardoso</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decryption Page</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+  <script>
+    function descriptografarTexto() {
+      // Pega a string Base64 da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const base64String = urlParams.get('d');
+
+      // Chave de descriptografia (deve ser mantida em segredo e nunca ser compartilhada publicamente)
+      const chaveDescriptografia = "amigoSecretoFamilia";
+
+      // Descriptografa usando AES
+      const bytes = CryptoJS.AES.decrypt(base64String, chaveDescriptografia);
+      const textoDescriptografado = bytes.toString(CryptoJS.enc.Utf8);
+      
+      // Atualiza a tag h1 com o texto descriptografado
+      document.getElementById('textoDescriptografado').innerText = textoDescriptografado;
+    }
+  </script>
 </head>
-<body>
-	<h3>Teste.</h3>
-	<h4>Hash <div id="recebeDados"></div></h4>
-	<script src="./base/js/crypt.js"></script>
+<body onload="descriptografarTexto()">
+  <h1 id="textoDescriptografado">Aguardando descriptografia...</h1>
 </body>
-<script>
-	// pegando os dados da url
-	let queryString = window.location.search;
-	var urlRedicerionamento= "";
-	if(queryString.length >0){// removendo o "?"
-		if(queryString.charAt(0) == '?'){
-			queryString = queryString.substring(1,queryString.length);
-		}
-	}
-	// console.log(queryString);
-
-	
-	let obj = null;
-	if(queryString.length >0){
-		obj = JSON.parse(Descriptografar(queryString)); // transformando a hash em obj
-	}
-	let exibir = false;
-	let nomeEnvelope = "NÃO CONVIDADO";
-	let nomeCarta = nomeEnvelope;
-	if(obj != null){
-		if(obj.idconvite != null){
-			console.log("aqui");
-			// faz a request e pega o retorno para jogar na mensagem
-		} 
-	} 
-	
-
-
-
-
-	// if(obj != null){
-	// 	if(obj.idconvite != null){
-	// 		// vai fazer redirecionamento.
-	// 		temObj = false;
-	// 		if(obj.obj != null){
-	// 			temObj = true; // por hora vou redirecionar o obj
-	// 		}
-	// 		let caminho = './projetos/'
-	// 		switch (obj.t){
-	// 			case 'convite':
-	// 				caminho+="convite/index.html";
-	// 				break;
-	// 			case 'uteis': 
-	// 				caminho += "uteis/index.html";
-	// 				break;
-	// 			default:
-	// 				caminho += "./index.html";
-	// 				temObj = false;
-	// 		}
-
-	// 		urlRedicerionamento=caminho+(temObj?"?"+queryString:"");
-	// 		console.log(urlRedicerionamento);
-
-	// 	} else {
-	// 		urlRedicerionamento = "./index.html";
-	// 	}
-	// } else {
-	// 	urlRedicerionamento = "./index.html";
-	// }
-	// function redireciona(){
-	// 	window.location.href=urlRedicerionamento;
-	// }
-
-</script>
 </html>
